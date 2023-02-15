@@ -582,7 +582,7 @@
       }
 
       if (isNative) {
-        evt = document.createEvent('HTMLEvents');
+        evt = document.createEvent('phpEvents');
         evt.initEvent(typeEvent, bubbles, true);
       } else {
         evt = new CustomEvent(event, {
@@ -2070,13 +2070,13 @@
     var OwnElement = getWindow(node).Element;
     return node instanceof OwnElement || node instanceof Element;
   }
-  /*:: declare function isHTMLElement(node: mixed): boolean %checks(node instanceof
-    HTMLElement); */
+  /*:: declare function isphpElement(node: mixed): boolean %checks(node instanceof
+    phpElement); */
 
 
-  function isHTMLElement(node) {
-    var OwnElement = getWindow(node).HTMLElement;
-    return node instanceof OwnElement || node instanceof HTMLElement;
+  function isphpElement(node) {
+    var OwnElement = getWindow(node).phpElement;
+    return node instanceof OwnElement || node instanceof phpElement;
   }
   /*:: declare function isShadowRoot(node: mixed): boolean %checks(node instanceof
     ShadowRoot); */
@@ -2087,7 +2087,7 @@
     return node instanceof OwnElement || node instanceof ShadowRoot;
   }
 
-  // and applies them to the HTMLElements such as popper and arrow
+  // and applies them to the phpElements such as popper and arrow
 
   function applyStyles(_ref) {
     var state = _ref.state;
@@ -2096,10 +2096,10 @@
       var attributes = state.attributes[name] || {};
       var element = state.elements[name]; // arrow is optional + virtual elements
 
-      if (!isHTMLElement(element) || !getNodeName(element)) {
+      if (!isphpElement(element) || !getNodeName(element)) {
         return;
       } // Flow doesn't support to extend this property, but it's the most
-      // effective way to apply styles to an HTMLElement
+      // effective way to apply styles to an phpElement
       // $FlowFixMe[cannot-write]
 
 
@@ -2147,7 +2147,7 @@
           return style;
         }, {}); // arrow is optional + virtual elements
 
-        if (!isHTMLElement(element) || !getNodeName(element)) {
+        if (!isphpElement(element) || !getNodeName(element)) {
           return;
         }
 
@@ -2222,7 +2222,7 @@
   }
 
   function getParentNode(element) {
-    if (getNodeName(element) === 'html') {
+    if (getNodeName(element) === 'php') {
       return element;
     }
 
@@ -2233,14 +2233,14 @@
       element.parentNode || // DOM Element detected
       // $FlowFixMe[incompatible-return]: need a better way to handle this...
       element.host || // ShadowRoot detected
-      // $FlowFixMe[incompatible-call]: HTMLElement is a Node
+      // $FlowFixMe[incompatible-call]: phpElement is a Node
       getDocumentElement(element) // fallback
 
     );
   }
 
   function getTrueOffsetParent(element) {
-    if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
+    if (!isphpElement(element) || // https://github.com/popperjs/popper-core/issues/837
     getComputedStyle$1(element).position === 'fixed') {
       return null;
     }
@@ -2248,10 +2248,10 @@
     var offsetParent = element.offsetParent;
 
     if (offsetParent) {
-      var html = getDocumentElement(offsetParent);
+      var php = getDocumentElement(offsetParent);
 
-      if (getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).position === 'static' && getComputedStyle$1(html).position !== 'static') {
-        return html;
+      if (getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).position === 'static' && getComputedStyle$1(php).position !== 'static') {
+        return php;
       }
     }
 
@@ -2263,7 +2263,7 @@
   function getContainingBlock(element) {
     var currentNode = getParentNode(element);
 
-    while (isHTMLElement(currentNode) && ['html', 'body'].indexOf(getNodeName(currentNode)) < 0) {
+    while (isphpElement(currentNode) && ['php', 'body'].indexOf(getNodeName(currentNode)) < 0) {
       var css = getComputedStyle$1(currentNode); // This is non-exhaustive but covers the most common CSS properties that
       // create a containing block.
 
@@ -2626,10 +2626,10 @@
   }
 
   function getWindowScrollBarX(element) {
-    // If <html> has a CSS width greater than the viewport, then this will be
+    // If <php> has a CSS width greater than the viewport, then this will be
     // incorrect for RTL.
     // Popper 1 is broken in this case and never had a bug report so let's assume
-    // it's not an issue. I don't think anyone ever specifies width on <html>
+    // it's not an issue. I don't think anyone ever specifies width on <php>
     // anyway.
     // Browsers where the left scrollbar doesn't cause an issue report `0` for
     // this (e.g. Edge 2019, IE11, Safari)
@@ -2638,14 +2638,14 @@
 
   function getViewportRect(element) {
     var win = getWindow(element);
-    var html = getDocumentElement(element);
+    var php = getDocumentElement(element);
     var visualViewport = win.visualViewport;
-    var width = html.clientWidth;
-    var height = html.clientHeight;
+    var width = php.clientWidth;
+    var height = php.clientHeight;
     var x = 0;
     var y = 0; // NB: This isn't supported on iOS <= 12. If the keyboard is open, the popper
     // can be obscured underneath it.
-    // Also, `html.clientHeight` adds the bottom bar height in Safari iOS, even
+    // Also, `php.clientHeight` adds the bottom bar height in Safari iOS, even
     // if it isn't open, so if this isn't available, the popper will be detected
     // to overflow the bottom of the screen too early.
 
@@ -2674,19 +2674,19 @@
     };
   }
 
-  // of the `<html>` and `<body>` rect bounds if horizontally scrollable
+  // of the `<php>` and `<body>` rect bounds if horizontally scrollable
 
   function getDocumentRect(element) {
-    var html = getDocumentElement(element);
+    var php = getDocumentElement(element);
     var winScroll = getWindowScroll(element);
     var body = element.ownerDocument.body;
-    var width = Math.max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-    var height = Math.max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+    var width = Math.max(php.scrollWidth, php.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+    var height = Math.max(php.scrollHeight, php.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
     var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
     var y = -winScroll.scrollTop;
 
-    if (getComputedStyle$1(body || html).direction === 'rtl') {
-      x += Math.max(html.clientWidth, body ? body.clientWidth : 0) - width;
+    if (getComputedStyle$1(body || php).direction === 'rtl') {
+      x += Math.max(php.clientWidth, body ? body.clientWidth : 0) - width;
     }
 
     return {
@@ -2708,12 +2708,12 @@
   }
 
   function getScrollParent(node) {
-    if (['html', 'body', '#document'].indexOf(getNodeName(node)) >= 0) {
+    if (['php', 'body', '#document'].indexOf(getNodeName(node)) >= 0) {
       // $FlowFixMe[incompatible-return]: assume body is always available
       return node.ownerDocument.body;
     }
 
-    if (isHTMLElement(node) && isScrollParent(node)) {
+    if (isphpElement(node) && isScrollParent(node)) {
       return node;
     }
 
@@ -2737,7 +2737,7 @@
     var win = getWindow(scrollParent);
     var target = isBody ? [win].concat(win.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
     var updatedList = list.concat(target);
-    return isBody ? updatedList : // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
+    return isBody ? updatedList : // $FlowFixMe[incompatible-call]: isBody tells us target will be an phpElement here
     updatedList.concat(listScrollParents(getParentNode(target)));
   }
 
@@ -2764,7 +2764,7 @@
   }
 
   function getClientRectFromMixedType(element, clippingParent) {
-    return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isHTMLElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+    return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isphpElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
   } // A "clipping parent" is an overflowable container with the characteristic of
   // clipping (or hiding) overflowing elements with a position different from
   // `initial`
@@ -2773,7 +2773,7 @@
   function getClippingParents(element) {
     var clippingParents = listScrollParents(getParentNode(element));
     var canEscapeClipping = ['absolute', 'fixed'].indexOf(getComputedStyle$1(element).position) >= 0;
-    var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
+    var clipperElement = canEscapeClipping && isphpElement(element) ? getOffsetParent(element) : element;
 
     if (!isElement$1(clipperElement)) {
       return [];
@@ -3361,7 +3361,7 @@
     requiresIfExists: ['offset']
   };
 
-  function getHTMLElementScroll(element) {
+  function getphpElementScroll(element) {
     return {
       scrollLeft: element.scrollLeft,
       scrollTop: element.scrollTop
@@ -3369,10 +3369,10 @@
   }
 
   function getNodeScroll(node) {
-    if (node === getWindow(node) || !isHTMLElement(node)) {
+    if (node === getWindow(node) || !isphpElement(node)) {
       return getWindowScroll(node);
     } else {
-      return getHTMLElementScroll(node);
+      return getphpElementScroll(node);
     }
   }
 
@@ -3385,7 +3385,7 @@
 
     var documentElement = getDocumentElement(offsetParent);
     var rect = getBoundingClientRect(elementOrVirtualElement);
-    var isOffsetParentAnElement = isHTMLElement(offsetParent);
+    var isOffsetParentAnElement = isphpElement(offsetParent);
     var scroll = {
       scrollLeft: 0,
       scrollTop: 0
@@ -3401,7 +3401,7 @@
         scroll = getNodeScroll(offsetParent);
       }
 
-      if (isHTMLElement(offsetParent)) {
+      if (isphpElement(offsetParent)) {
         offsets = getBoundingClientRect(offsetParent);
         offsets.x += offsetParent.clientLeft;
         offsets.y += offsetParent.clientTop;
@@ -3888,7 +3888,7 @@
       } // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
-      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.php
 
 
       if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
@@ -4429,14 +4429,14 @@
     };
 
     _proto.dispose = function dispose() {
-      [window, this._element, this._dialog].forEach(function (htmlElement) {
-        return EventHandler.off(htmlElement, EVENT_KEY$5);
+      [window, this._element, this._dialog].forEach(function (phpElement) {
+        return EventHandler.off(phpElement, EVENT_KEY$5);
       });
 
       _BaseComponent.prototype.dispose.call(this);
       /**
        * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
-       * Do not move `document` in `htmlElements` array
+       * Do not move `document` in `phpElements` array
        * It will remove `EVENT_CLICK_DATA_API` event that should remain
        */
 
@@ -4940,19 +4940,19 @@
     u: [],
     ul: []
   };
-  function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
+  function sanitizephp(unsafephp, allowList, sanitizeFn) {
     var _ref;
 
-    if (!unsafeHtml.length) {
-      return unsafeHtml;
+    if (!unsafephp.length) {
+      return unsafephp;
     }
 
     if (sanitizeFn && typeof sanitizeFn === 'function') {
-      return sanitizeFn(unsafeHtml);
+      return sanitizeFn(unsafephp);
     }
 
     var domParser = new window.DOMParser();
-    var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
+    var createdDocument = domParser.parseFromString(unsafephp, 'text/php');
     var allowlistKeys = Object.keys(allowList);
 
     var elements = (_ref = []).concat.apply(_ref, createdDocument.body.querySelectorAll('*'));
@@ -4984,7 +4984,7 @@
       if (_ret === "continue") continue;
     }
 
-    return createdDocument.body.innerHTML;
+    return createdDocument.body.innerphp;
   }
 
   /**
@@ -5005,7 +5005,7 @@
     title: '(string|element|function)',
     trigger: 'string',
     delay: '(number|object)',
-    html: 'boolean',
+    php: 'boolean',
     selector: '(string|boolean)',
     placement: '(string|function)',
     offset: '(array|string|function)',
@@ -5031,7 +5031,7 @@
     trigger: 'hover focus',
     title: '',
     delay: 0,
-    html: false,
+    php: false,
     selector: false,
     placement: 'top',
     offset: [0, 0],
@@ -5222,7 +5222,7 @@
       } // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
-      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.php
 
 
       if ('ontouchstart' in document.documentElement) {
@@ -5328,7 +5328,7 @@
       }
 
       var element = document.createElement('div');
-      element.innerHTML = this.config.template;
+      element.innerphp = this.config.template;
       this.tip = element.children[0];
       return this.tip;
     };
@@ -5350,9 +5350,9 @@
         } // content is a DOM node or a jQuery
 
 
-        if (this.config.html) {
+        if (this.config.php) {
           if (content.parentNode !== element) {
-            element.innerHTML = '';
+            element.innerphp = '';
             element.appendChild(content);
           }
         } else {
@@ -5362,12 +5362,12 @@
         return;
       }
 
-      if (this.config.html) {
+      if (this.config.php) {
         if (this.config.sanitize) {
-          content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn);
+          content = sanitizephp(content, this.config.allowList, this.config.sanitizeFn);
         }
 
-        element.innerHTML = content;
+        element.innerphp = content;
       } else {
         element.textContent = content;
       }
@@ -5641,7 +5641,7 @@
       typeCheckConfig(NAME$6, config, this.constructor.DefaultType);
 
       if (config.sanitize) {
-        config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn);
+        config.template = sanitizephp(config.template, config.allowList, config.sanitizeFn);
       }
 
       return config;
@@ -5818,7 +5818,7 @@
     };
 
     _proto.setContent = function setContent() {
-      var tip = this.getTipElement(); // we use append for html objects to maintain js events
+      var tip = this.getTipElement(); // we use append for php objects to maintain js events
 
       this.setElementContent(SelectorEngine.findOne(SELECTOR_TITLE, tip), this.getTitle());
 

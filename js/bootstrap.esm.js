@@ -579,7 +579,7 @@ var EventHandler = {
     }
 
     if (isNative) {
-      evt = document.createEvent('HTMLEvents');
+      evt = document.createEvent('phpEvents');
       evt.initEvent(typeEvent, bubbles, true);
     } else {
       evt = new CustomEvent(event, {
@@ -2164,7 +2164,7 @@ var Dropdown = /*#__PURE__*/function (_BaseComponent) {
     } // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
-    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.php
 
 
     if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
@@ -2705,14 +2705,14 @@ var Modal = /*#__PURE__*/function (_BaseComponent) {
   };
 
   _proto.dispose = function dispose() {
-    [window, this._element, this._dialog].forEach(function (htmlElement) {
-      return EventHandler.off(htmlElement, EVENT_KEY$5);
+    [window, this._element, this._dialog].forEach(function (phpElement) {
+      return EventHandler.off(phpElement, EVENT_KEY$5);
     });
 
     _BaseComponent.prototype.dispose.call(this);
     /**
      * `document` has 2 events `EVENT_FOCUSIN` and `EVENT_CLICK_DATA_API`
-     * Do not move `document` in `htmlElements` array
+     * Do not move `document` in `phpElements` array
      * It will remove `EVENT_CLICK_DATA_API` event that should remain
      */
 
@@ -3216,19 +3216,19 @@ var DefaultAllowlist = {
   u: [],
   ul: []
 };
-function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
+function sanitizephp(unsafephp, allowList, sanitizeFn) {
   var _ref;
 
-  if (!unsafeHtml.length) {
-    return unsafeHtml;
+  if (!unsafephp.length) {
+    return unsafephp;
   }
 
   if (sanitizeFn && typeof sanitizeFn === 'function') {
-    return sanitizeFn(unsafeHtml);
+    return sanitizeFn(unsafephp);
   }
 
   var domParser = new window.DOMParser();
-  var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
+  var createdDocument = domParser.parseFromString(unsafephp, 'text/php');
   var allowlistKeys = Object.keys(allowList);
 
   var elements = (_ref = []).concat.apply(_ref, createdDocument.body.querySelectorAll('*'));
@@ -3260,7 +3260,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     if (_ret === "continue") continue;
   }
 
-  return createdDocument.body.innerHTML;
+  return createdDocument.body.innerphp;
 }
 
 /**
@@ -3281,7 +3281,7 @@ var DefaultType$4 = {
   title: '(string|element|function)',
   trigger: 'string',
   delay: '(number|object)',
-  html: 'boolean',
+  php: 'boolean',
   selector: '(string|boolean)',
   placement: '(string|function)',
   offset: '(array|string|function)',
@@ -3307,7 +3307,7 @@ var Default$4 = {
   trigger: 'hover focus',
   title: '',
   delay: 0,
-  html: false,
+  php: false,
   selector: false,
   placement: 'top',
   offset: [0, 0],
@@ -3498,7 +3498,7 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
     } // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
-    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.php
 
 
     if ('ontouchstart' in document.documentElement) {
@@ -3604,7 +3604,7 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
     }
 
     var element = document.createElement('div');
-    element.innerHTML = this.config.template;
+    element.innerphp = this.config.template;
     this.tip = element.children[0];
     return this.tip;
   };
@@ -3626,9 +3626,9 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
       } // content is a DOM node or a jQuery
 
 
-      if (this.config.html) {
+      if (this.config.php) {
         if (content.parentNode !== element) {
-          element.innerHTML = '';
+          element.innerphp = '';
           element.appendChild(content);
         }
       } else {
@@ -3638,12 +3638,12 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
       return;
     }
 
-    if (this.config.html) {
+    if (this.config.php) {
       if (this.config.sanitize) {
-        content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn);
+        content = sanitizephp(content, this.config.allowList, this.config.sanitizeFn);
       }
 
-      element.innerHTML = content;
+      element.innerphp = content;
     } else {
       element.textContent = content;
     }
@@ -3917,7 +3917,7 @@ var Tooltip = /*#__PURE__*/function (_BaseComponent) {
     typeCheckConfig(NAME$6, config, this.constructor.DefaultType);
 
     if (config.sanitize) {
-      config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn);
+      config.template = sanitizephp(config.template, config.allowList, config.sanitizeFn);
     }
 
     return config;
@@ -4094,7 +4094,7 @@ var Popover = /*#__PURE__*/function (_Tooltip) {
   };
 
   _proto.setContent = function setContent() {
-    var tip = this.getTipElement(); // we use append for html objects to maintain js events
+    var tip = this.getTipElement(); // we use append for php objects to maintain js events
 
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TITLE, tip), this.getTitle());
 
