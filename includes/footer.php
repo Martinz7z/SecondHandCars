@@ -1,8 +1,14 @@
 
-
+<footer class = "bg-secondary mt-5 text-center text-light p-3 ">
 <div class="footer">
-	<h1 style="color: white;">This is the Footer.</h1>
+
+	<h4 style="color: white;">copyright 2023 my best website</h4>
+
 </div>
+
+</footer>
+
+
 
 
 </main><!-- /.container -->
