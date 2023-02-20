@@ -1,3 +1,4 @@
+
 <!doctype php>
 <php lang="en">
   <head>
@@ -51,3 +52,4 @@
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </php>
+<?php include 'includes/footer.php';?>
