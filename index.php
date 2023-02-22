@@ -2,8 +2,8 @@
 
 <main class="container">
   <div class="starter-template text-center">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones php document.</p>
+    <h1 class="first_title">Second Hand Cars</h1>
+    <p class="lead">Best second hand cars in Ireland.</p>
   </div>
 
   <div class="container text-center">

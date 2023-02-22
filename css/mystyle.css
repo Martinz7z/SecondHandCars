@@ -1,0 +1,50 @@
+/* Add your own CSS under here */
+.extra-marg-top {
+    margin-top: 50px;
+}
+.first_title
+{
+    text-transform: uppercase;
+}
+
+
+/*===============footer css =================*/
+/*Puts it down lower along with changing background color and color of text*/
+.footer-basic {
+    padding:40px 0;
+    background-color:#ffffff;
+    color:#4b4c4d;
+  }
+  /*Centers the hyperlink titles and makes them bigger*/
+  .footer-basic ul {
+    padding:0;
+    list-style:none;
+    text-align:center;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:0;
+  }
+  /*Spaces them the hyperlink titles out*/
+  .footer-basic li {
+    padding:0 10px;
+  }
+  /*sets the color to darker one rather then full blue underline*/
+  .footer-basic ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+  }
+  
+  /*color change on hover*/
+  .footer-basic ul a:hover {
+    opacity:1;
+  }
+  /*Aligns text in center changers font size and color and margin from top */
+  .footer-basic .copyright {
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#aaa;
+    margin-bottom:0;
+  }
+  /*==============================================================*/

@@ -1,12 +1,16 @@
-
-<footer class = "bg-secondary mt-5 text-center text-light p-3 ">
-<div class="footer">
-
-	<h4 style="color: white;">copyright 2023 my best website</h4>
-
-</div>
-
-</footer>
+<div class="footer-basic">
+        <footer>
+            
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.php">Home</a></li>
+                <li class="list-inline-item"><a href="about.php">About</a></li>
+                <li class="list-inline-item"><a href="terms.php">Terms</a></li>
+                <li class="list-inline-item"><a href="privacypolicy.php">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="contact.php">Contact</a></li>
+            </ul>
+            <p class="copyright">Second Hand Cars © 2023</p>
+        </footer>
+    </div>
 
 
 

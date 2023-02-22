@@ -3,8 +3,8 @@
 
 <main class="container">
   <div class="starter-template text-center">
-    <h1>Page 3</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones php document.</p>
+    <h1>About Us</h1>
+    <p class="lead">about us page</p>
   </div>
 
 </main><!-- /.container -->

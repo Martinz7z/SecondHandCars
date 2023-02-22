@@ -10,7 +10,7 @@
     <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="mystyle.css" rel="stylesheet">
+    <link href="css/mystyle.css" rel="stylesheet">
   </head>
   <body>
     
@@ -27,13 +27,13 @@
           <span class="d-flex">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="page-1.php">Page 1</a>
+                <a class="nav-link" aria-current="page" href="about.php">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="page-2.php">Page 2</a>
+                <a class="nav-link" aria-current="page" href="terms.php">Terms</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="page-3.php">Page 3</a>
+                <a class="nav-link" aria-current="page" href="privacypolicy.php">Privacy Policy</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="contact.php">Contact</a>
