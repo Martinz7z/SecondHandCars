@@ -6,26 +6,27 @@
 
 	
 <br><br>
-<h1>Contact us</h1>
+<h1>Contact us</h1><br>
+
 <form method="POST" name="contactform" action="contact-form-handler.php"> 
 <p>
-<label for='name'>Your Name:</label> <br>
+<label  for='name' class = "contactptext">Your Name:</label> <br>
 <input type="text" name="name" class="form-control">
 </p>
 <p>
-<label for='email'>Email Address:</label> <br>
+<label for='email' class = "contactptext">Email Address:</label> <br>
 <input type="text" name="email" class="form-control"> <br>
 </p>
 <p>
-<label for="phone">Enter a phone number:</label><br><br>
+<label for="phone" class = "contactptext">Enter a phone number:</label><br><br>
 
 
 <input type="tel" id="phone" name="phone" class="form-control" placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
- <small>Format: 123-425-6784</small><br> 
+ <small class = "fs-6 text">Format: 123-425-6784</small><br> 
 </p>
   
 <p>
-<label for='message'>Message:</label> <br>
+<label for='message' class = "contactptext">Message:</label> <br>
 <textarea name="message" class="form-control"></textarea>
 </p>
 <input type="submit" value="Submit" class="btn btn-primary"><br>

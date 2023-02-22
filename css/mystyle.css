@@ -6,7 +6,11 @@
 {
     text-transform: uppercase;
 }
-
+.contactptext
+{
+    font-size: 19px;
+    font-weight:400;
+}
 
 /*===============footer css =================*/
 /*Puts it down lower along with changing background color and color of text*/
