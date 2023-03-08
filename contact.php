@@ -40,13 +40,33 @@ placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
 <!-- end of phone -->
 
 
+$gender = $_POST['gender'];
+$postcode = $_POST['postcode'];
+$carbrand = $_POST['carbrand'];
+$price= $_POST['price'];
 
+<!-- start of gender -->
+
+<!-- end of gender -->
+
+<!-- start of postcode -->
+<!-- end of postcode -->
+
+<!-- start of carbrand -->
+<!-- end of carbrand -->
+
+<!-- start of price -->
+<!-- end of price -->
 
 
  <!-- start of message -->
 <p><label for='message' class = "contactptext">Message:</label> <br>
 <textarea name="message" class="form-control"></textarea></p>
 <!-- end of message -->
+
+
+
+
 
 
 
