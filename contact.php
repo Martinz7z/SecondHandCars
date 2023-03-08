@@ -39,23 +39,37 @@ placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
 <small class = "fs-6 text">Format: 123-425-6784</small><br></p> 
 <!-- end of phone -->
 
-
-$gender = $_POST['gender'];
-$postcode = $_POST['postcode'];
-$carbrand = $_POST['carbrand'];
-$price= $_POST['price'];
-
-<!-- start of gender -->
-
-<!-- end of gender -->
-
 <!-- start of postcode -->
+<label for="zip" class = "contactptext">Post Code:</label>
+<input type="text" name="zip" id="zip" onBlur="zip_validation();" /><span id="zip_err"></span><br><br>
 <!-- end of postcode -->
 
+
+<!-- start of gender -->
+<label id="gender"  class = "contactptext">Sex:</label><br>
+<input type="radio" name="msex" id="msex" value="Male" onBlur="gender_validation();" /><span>Male</span>
+<input type="radio" name="fsex" id="fsex" value="Female" /><span>Female</span><span id="gender_err"></span><br><br> 
+<!-- end of gender -->
+
+
 <!-- start of carbrand -->
+<label for="country" class = "contactptext">Car Brand:</label>
+<select id="country" name="country" onBlur="country_validation();">
+<option selected="" value="Default">(Please select a country)</option>
+<option value="--">none</option>
+<option value="AF">BMW</option>
+<option value="AL">Mercedes</option>
+<option value="DZ">Lexus</option>
+<option value="AS">Hyundai</option>
+<option value="AD">Honda</option>
+</select><span id="country_err"></span><br><br>
+
 <!-- end of carbrand -->
 
 <!-- start of price -->
+<label class = "contactptext">Price Range:</label><br>
+<input type="checkbox" name="en" value="en" checked /><span>Higher End</span>
+<input type="checkbox" name="nonen" value="noen" /><span>Lower End</span><br><br>
 <!-- end of price -->
 
 

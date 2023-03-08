@@ -63,13 +63,13 @@ function userid_validation(){
     var country_value = document.getElementById("country").value;
     if(country_value === "Default" || country_value === "--")
     {
-    document.getElementById('country_err').innerHTML = 'You must select a country';
+    document.getElementById('country_err').innerHTML = 'You must select a Car Brand';
     country_name.focus();
     document.getElementById('country_err').style.color = "#FF0000";
     }
     else
     {
-    document.getElementById('country_err').innerHTML = 'Country selected.';
+    document.getElementById('country_err').innerHTML = 'Car Brand selected.';
     document.getElementById('country_err').style.color = "#00AF33";
     }
     }
@@ -83,13 +83,13 @@ function userid_validation(){
     var zip_length = zip_value.length;
     if(!zip_value.match(numbers) || zip_length !== 5)
     {
-    document.getElementById('zip_err').innerHTML = 'You must enter a ZIP code, which must be numeric and must be at least 5 chracters long.';
+    document.getElementById('zip_err').innerHTML = 'You must enter a Post code, which must be numeric and must be at least 5 chracters long.';
     zip_name.focus();
     document.getElementById('zip_err').style.color = "#FF0000";
     }
     else
     {
-    document.getElementById('zip_err').innerHTML = 'ZIP code entered';
+    document.getElementById('zip_err').innerHTML = 'Post code entered';
     document.getElementById('zip_err').style.color = "#00AF33";
     }
     }
