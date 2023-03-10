@@ -18,7 +18,7 @@ $statement->closeCursor();
     <p class="lead">Best second hand cars in Ireland.</p>
   </div>
 
-  <table>
+  <table class ="styled-table">
             <tr>
                 <th>Make</th>
                 <th>Model</th>
@@ -32,7 +32,6 @@ $statement->closeCursor();
                 <td><?php echo $car['Model']; ?></td>
                 <td><?php echo $car['Registration']; ?></td>
                 <td><?php echo $car['Year']; ?></td>
-
             </tr>
             <?php endforeach; ?>
         </table>
