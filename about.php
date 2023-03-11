@@ -1,5 +1,5 @@
 <?php include 'includes/header.php';?>
-
+<link href="css/mystyle.css" rel="stylesheet">
 
 <main class="container">
   <div class="starter-template text-center">
@@ -7,6 +7,10 @@
     <p class="lead">about us page</p>
   </div>
 
+  <img src="images/cardealership.jpg" class="rounded"  alt="cardealership" >
+
+
+  
 </main><!-- /.container -->
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>

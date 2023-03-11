@@ -18,23 +18,41 @@ $statement->closeCursor();
     <p class="lead">Best second hand cars in Ireland.</p>
   </div>
 
+
+
+  <!-- start of database table -->
   <table class ="styled-table">
+    <!-- Styled thead -->
+  <thead>
             <tr>
                 <th>Make</th>
                 <th>Model</th>
                 <th>Registration</th>
+                <th>Price</th>
                 <th>Year</th>
             </tr>
-
+  </thead>
+           <!-- for loop going through database -->
             <?php foreach ($cars as $car) : ?>
+
+
+              <!-- Tbody thats styled -->
+       <tbody>
             <tr>
                 <td><?php echo $car['Make']; ?></td>
                 <td><?php echo $car['Model']; ?></td>
                 <td><?php echo $car['Registration']; ?></td>
+                <td><?php echo $car['Price']; ?></td>
                 <td><?php echo $car['Year']; ?></td>
             </tr>
+        </tbody>
+
+        
             <?php endforeach; ?>
         </table>
+        <!-- end of table -->
+
+        
 
 
   <div class="container text-center">

@@ -1,7 +1,7 @@
 <?php include 'includes/header.php';?>
 
 <main class="container">
-<title>Contact us</title>
+<title>Enquire About a Car</title>
 <!-- define some style elements-->
 
 	
@@ -10,7 +10,7 @@
 
 <!-- Normal contact form with form handler and validation -->
 
-<form method="POST" name="contactform" action="contact-form-handler.php"> 
+<form method="POST" name="contactform" action="enquiry-form-handler.php"> 
 
 
 

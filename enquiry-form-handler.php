@@ -57,7 +57,7 @@ if( empty($errors))
 <!DOCTYPE HTML>
 <html>
 <head>
-        <title>Contact form handler</title>
+        <title>Enquiry form handler</title>
 </head>
 
 <body>
