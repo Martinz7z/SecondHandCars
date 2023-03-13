@@ -29,10 +29,10 @@ $email_address = $_POST['email'];
 $phone = $_POST['phone'];
 $message = $_POST['message'];
 
-$gender = $_POST['gender'];
-$postcode = $_POST['postcode'];
-$carbrand = $_POST['carbrand'];
-$price= $_POST['price'];
+$gender = $_POST['msex'];
+$postcode = $_POST['zip'];
+$carbrand = $_POST['country'];
+$price= $_POST['en'];
 
 
 if (!preg_match(
@@ -47,7 +47,8 @@ if( empty($errors))
         $to = $myemail;
         $email_subject = "Contact form submission: $name";
         $email_body = "You have received a new message. ".
-        " Here are the details:\n Name: $name \n Email: $email_address \n Phone: $phone \nMessage \n $message";
+        " Here are the details:\n Name: $name \n Email: $email_address \n Phone: $phone \nMessage:  \n $message \nGender:  
+        \n $gender \nPostcode: \n $postcode \nCarBrand: \n $carbrand \n Price: \n $price" ;
 
         mail($to,$email_subject,$email_body,$headers);
         //redirect to the 'thank you' page

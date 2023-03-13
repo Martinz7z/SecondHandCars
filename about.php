@@ -9,6 +9,17 @@
 
   <img src="images/cardealership.jpg" class="rounded"  alt="cardealership" >
 
+  <br><br>  
+
+  <p class ="para">
+    We are the biggest second hand car collecters in ireland. We aim to provide you with fully functioning well priced vehicles 
+    that you wouldnt otherwise get anywhere else for the same price. We have multiple car dealer ships across ireland.
+
+    For research and development purposes, we may use datasets such as those that contain images, voices, or other data that
+     could be associated with an identifiable person. When acquiring such datasets, we do so in accordance with applicable
+      law, including law in the jurisdiction in which the dataset is hosted. When using such datasets for research and
+       development, we do not attempt to reidentify individuals who may appear therein.
+  </p>
 
   
 </main><!-- /.container -->

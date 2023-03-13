@@ -100,3 +100,15 @@ img {
   margin-right: auto;
   width: 50%;
 }
+
+
+.para {
+
+    font-size: 20px;
+    text-indent: 40px;
+    font-weight:200;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    
+}
+

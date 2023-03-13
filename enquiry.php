@@ -30,7 +30,9 @@
 <!-- end of email -->
 
 
- 
+
+
+
 
  <!-- start of phone -->
 <p><label for="phone" class = "contactptext" required>Enter a phone number:</label><br><br>
@@ -39,10 +41,29 @@ placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
 <small class = "fs-6 text">Format: 123-425-6784</small><br></p> 
 <!-- end of phone -->
 
+
+
+
+
+
+
+
+
+
+
+
 <!-- start of postcode -->
 <label for="zip" class = "contactptext">Post Code:</label>
-<input type="text" name="zip" id="zip" onBlur="zip_validation();" /><span id="zip_err"></span><br><br>
+<input type="text" name="zip" gender id="zip" onBlur="zip_validation();" /><span id="zip_err"></span><br><br>
 <!-- end of postcode -->
+
+
+
+
+
+
+
+
 
 
 <!-- start of gender -->
@@ -50,6 +71,11 @@ placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
 <input type="radio" name="msex" id="msex" value="Male" onBlur="gender_validation();" /><span>Male</span>
 <input type="radio" name="fsex" id="fsex" value="Female" /><span>Female</span><span id="gender_err"></span><br><br> 
 <!-- end of gender -->
+
+
+
+
+
 
 
 <!-- start of carbrand -->
@@ -66,6 +92,12 @@ placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
 
 <!-- end of carbrand -->
 
+
+
+
+
+
+
 <!-- start of price -->
 <label class = "contactptext">Price Range:</label><br>
 <input type="checkbox" name="en" value="en" checked /><span>Higher End</span>
@@ -73,10 +105,18 @@ placeholder="085-435-6478" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
 <!-- end of price -->
 
 
+
+
+
+
+
  <!-- start of message -->
 <p><label for='message' class = "contactptext">Message:</label> <br>
 <textarea name="message" class="form-control"></textarea></p>
 <!-- end of message -->
+
+
+
 
 
 
